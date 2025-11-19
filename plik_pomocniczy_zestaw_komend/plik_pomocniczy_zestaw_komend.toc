@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Podstawy Składni}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Komendy}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Środowiska}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Komendy własne}{2}{}%
+\contentsline {section}{\numberline {2}Podział Dokumentu}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Preambuła}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Treść dokumentu}{4}{}%
+\contentsline {section}{\numberline {3}Formatowanie Tekstu}{5}{}%
+\contentsline {subsection}{\numberline {3.1}Wcięcia i odstępy}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Podział hierarchiczny}{5}{}%
+\contentsline {subsection}{\numberline {3.3}Znaki specjalne}{6}{}%

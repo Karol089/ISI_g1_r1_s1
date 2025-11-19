@@ -1,0 +1,152 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{textcomp}
+\author{Karol Mamiński}
+\title{Zestawienia Wybranych Komend Programu \LaTeX}
+\date{}
+
+\makeatletter
+\newcommand{\linia}{\rule{\linewidth}{0.4mm}}
+\renewcommand{\maketitle}{\begin{titlepage}
+    \vspace*{1cm}
+    \begin{center}\small
+    Dokument wykonany\\
+    w celach dydaktycznych
+    \end{center}
+    \vspace{2cm}
+    \noindent\linia
+    \begin{center}
+      \LARGE \@title
+         \end{center}
+     \linia
+    \vspace*{\stretch{6}}
+    \begin{center}
+    \@author
+    \end{center}
+  \end{titlepage}%
+}
+\makeatother
+
+\renewcommand*\contentsname{Spis treści}
+
+\renewcommand{\labelitemii}{\labelitemiv{}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Podstawy Składni}
+\subsection{Komendy}
+Komendy w \LaTeX zaczynają się znakiem $\backslash$ (backslash), po którym następują słowa kluczowe, np.:\newline
+$\backslash$newline\newline
+Wiele komend posiada również atrybuty, zarówno wymagane jak i opcjonalne. Pierwsze z wymienionych umieszczamy w nawiasach klamrowych (\{\}), drugie zaś w kwadratowych ([ ]). Przykład:\newline
+$\backslash$documentclass[ a4paper, 12pt ]\{article\}
+
+\subsection{Środowiska}
+Poza standardowymi komendami do naszej dyspozycji w \LaTeX 'u posiadamy także środowiska. W prostych słowach są to komendy przeznaczone do stosowania na wielu wierszach.\newline
+Środowiska rozpoczynamy za pomocą komendy $\backslash$begin\{\} i kończymy za pomocą $\backslash$end\{\}. Przykład:\newline
+$\backslash$begin\{center\}\newline
+Zawartość podlegająca formatowaniu środowiska. W tym przypadku wyśrodkowaniu. \\
+$\backslash$end\{center\}
+
+\subsection{Komendy własne}
+Zdarza się, że materiały dostarczone przez \LaTeX 'a nie odpowiadają w pełni naszym potrzebom. Być może nie odpowiada nam domyślne formatowanie danej komendy, albo męczy nas wpisywanie za każdym razem dodatkowych atrybutów? W obu tych przypadkach możemy skorzystać z możliwości zmiany komendy bądź zdefiniowania własnej.\\
+\\
+W tym celu należy zastosować polecenia $\backslash$newcommand oraz $\backslash$renewcommand. Pierwsze z wymienionych pozwala nam na zdefiniowanie nowego polecenia, zaś druga na przypisanie nowych działań do już istniejącej komendy.\\
+\\
+Rozważmy dwa przypadki. W pierwszym chcemy mieć możliwość szybkiego nałożenia na tekst kursywy, podkreślenia i pogrubienia bez konieczności wpisywania trzech oddzielnych komend za każdym razem. Jednocześnie nie chcemy zmieniać działania poszczególnych komend, ponieważ są nam one potrzebne indywidualnie w innych częściach dokumentu. \\
+W tym przypadku należy zastosować polecenie $\backslash$newcommand w następujący sposób:\\
+$\backslash$newcommand\{wyroznienie\}[ 1 ]\{$\backslash$textbf\{$\backslash$emph\{$\backslash$underline\{\#1\}\}\}\}\\
+$\backslash$wyroznienie\{tekst który chcemy wyróżnić\}\newline 
+[ 1 ] -- ustalamy ile parametrów przyjmuje nasza komenda\\
+\#1 -- odwołanie do pierwszego podanego parametru\\
+\\
+W~drugim przypadku chcemy zmienić sposób numerowania wszystkich list w dokumencie na małe litery rzymskie.\\
+W~takim wypadku należy użyć polecenia $\backslash$renewcommand w~następujący sposób:\\
+$\backslash$renewcommand\{$\backslash$labelenumi\}\{$\backslash$roman\{enumi\}\} \\
+
+
+\section{Podział Dokumentu}
+\subsection{Preambuła}
+W preambule umieszczane są informacje kluczowe z punktu widzenia programu, takie jak klasa dokumentu, wybrane pakiety oraz dane, które mają znaleźć się w tytule.\newline
+Najczęściej wykorzystywane na zajęciach elementy preambuły przedstawiono poniżej.
+\begin{itemize}
+	\item $\backslash$documentclass[ a4paper, 12pt ]\{article\} -- ustawia klasę dokumentu na artykuł, rozmiar papieru na A4 oraz rozmiar czcionki na 12 punktów
+	\item $\backslash$usepackage[ T1 ]\{fontenc\} -- pozwala na pracę w języku polskim
+	\item $\backslash$usepackage\{amsmath\} -- zapewnia dodatkowe opcje matematyczne
+	\item $\backslash$usepackage\{algorithm\} -- pozwala na zapisywanie algorytmów
+	\item $\backslash$usepackage\{algpseudocode\} -- pozwala na zapisywanie algorytmów
+	\item $\backslash$author\{Imię i Nazwisko\} -- ustawia dane autora
+	\item $\backslash$title\{Tytuł\} -- ustawia tytuł
+	\item $\backslash$date\{data\} -- ustawia datę do wyświetlenia pod tytułem
+\end{itemize}
+
+\subsection{Treść dokumentu}
+Właściwą treść dokumentu należy umieścić wewnątrz otoczenia \textbf{document}. \newline
+Przykład:\newline
+$\backslash$begin\{document\}\newline
+Treść dokumentu\newline
+$\backslash$end\{document\}
+\newpage
+
+\section{Formatowanie Tekstu}
+\subsection{Wcięcia i odstępy}
+\LaTeX rozpoznaje spacje oraz złamania wierszy w kodzie źródłowym jako pojedynczy odstęp. \\
+Do dokładniejszej kontroli wcięć i odstępów wykorzystujemy następujące polecenia:
+\begin{itemize}
+	\item $\backslash$newline lub \begin{math}\backslash\backslash\end{math} -- łamie wiersz w wybranym miejscu (przechodzi do nowej linii)
+	\item \begin{math}\backslash\backslash\end{math}* -- zabrania podziału strony w miejscu złamania wiersza
+	\item $\backslash$newpage -- wstawia podział strony 
+	\item $\backslash$clearpage -- rozpoczyna nową stronę
+	\item $\backslash$cleardoublepage -- rozpoczyna nową nieparzystą stronę (w razie potrzeby tworzona również pusta parzysta strona)
+	\item $\sim$ (tylda) -- wstawia odstęp zabraniając jednocześnie złamania wiersza (np. W\~{}poniedziałek)
+\end{itemize} 
+
+\subsection{Podział hierarchiczny}
+W \LaTeX 'u dysponujemy następującymi znakami podziału:
+\begin{itemize}
+	\item w klasie article:
+	\begin{itemize}
+		\item $\backslash$section\{\}
+		\item $\backslash$subsection\{\}
+		\item $\backslash$subsubsection\{\}
+		\item $\backslash$paragraph\{\}
+		\item $\backslash$subparagraph\{\}
+		\item $\backslash$appendix\{\}
+	\end{itemize}
+	\item w klasach book i report dodatkowo:
+	\begin{itemize}
+		\item $\backslash$chapter\{\}
+		\item $\backslash$part\{\} -- nie narusza numeracji
+	\end{itemize}
+\end{itemize}
+W przypadku każdej z w/w komend umieszczenie gwiazdki (*) tuż przed nawiasem klamrowym spowoduje brak numeracji (np. $\backslash$section*\{\} ).
+
+\subsection{Znaki specjalne}
+Znaki specjalne dostępne w \LaTeX :
+\begin{itemize}
+	\item $\backslash$\~{}\{\} -- \~{}
+	\item \$$\backslash$sim\$ -- $\sim$
+	\item $\backslash$ldots -- \ldots
+	\item \$30$^{}$\{$\backslash$circ\}$\backslash$mathrm\{C\}\$ -- $30^{\circ}\mathrm{C}$
+	\item $\backslash$texteuro -- \texteuro ~(wymaga pakietu textcomp)
+	\item $\backslash$LaTeX -- \LaTeX
+	\item aby uzyskać długi myślnik (taki jak powyżej) należy wpisać dwa minusy
+\end{itemize}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
