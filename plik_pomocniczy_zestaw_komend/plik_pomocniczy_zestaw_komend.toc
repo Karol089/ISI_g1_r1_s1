@@ -1,11 +1,32 @@
-\contentsline {section}{\numberline {1}Podstawy Składni}{2}{}%
-\contentsline {subsection}{\numberline {1.1}Komendy}{2}{}%
-\contentsline {subsection}{\numberline {1.2}Środowiska}{2}{}%
-\contentsline {subsection}{\numberline {1.3}Komendy własne}{2}{}%
-\contentsline {section}{\numberline {2}Podział Dokumentu}{3}{}%
-\contentsline {subsection}{\numberline {2.1}Preambuła}{3}{}%
-\contentsline {subsection}{\numberline {2.2}Treść dokumentu}{4}{}%
-\contentsline {section}{\numberline {3}Formatowanie Tekstu}{5}{}%
-\contentsline {subsection}{\numberline {3.1}Wcięcia i odstępy}{5}{}%
-\contentsline {subsection}{\numberline {3.2}Podział hierarchiczny}{5}{}%
-\contentsline {subsection}{\numberline {3.3}Znaki specjalne}{6}{}%
+\contentsline {section}{\numberline {1}Podstawy Składni}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Komendy}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Środowiska}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Komendy własne}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Podział Dokumentu}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Preambuła}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Treść dokumentu}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Nagłówki i stopki}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Formatowanie Tekstu}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Wcięcia i odstępy}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Podział hierarchiczny}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Znaki specjalne}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Cytaty}{5}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Wyróżnienia tekstu}{5}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Rozmiary tekstu}{5}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Równania matematyczne}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Równania obok tekstu}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Równania w osobnym wierszu}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Równania wielowierszowe}{7}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Algorytmy}{7}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Macierze}{7}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Odsyłacze}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Odsyłacze jako tekst}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}odsyłacze jako hiperłącza}{8}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Kolory}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Pakiet xcolor}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Lista komend}{9}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Grafiki}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Pakiet graphicx}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Umieszczanie grafiki}{10}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Położenie w dokumencie}{10}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Obracanie elementów}{12}{subsection.7.4}%

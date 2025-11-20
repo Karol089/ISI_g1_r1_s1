@@ -1,13 +1,63 @@
+% klasa i wymiary dokumentu
 \documentclass[a4paper, 12pt]{article}
+
+% kodowanie polskich znaków
 \usepackage[T1]{fontenc}
+
+% pakiety matematyczne i algorytmiczne
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+
+% znaki specjalne
 \usepackage{textcomp}
+
+% marginesy
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+% nagłówki i stopki
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} % usuwa bieżące ustawienia nagłówka i stopki
+\fancyhead[L]{\textbf{Plik Pomocniczy}}
+\fancyfoot[R]{\textbf{\thepage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt}
+\fancypagestyle{plain}{ % usuwa formatowanie nagłówka dla stron bez numeracji
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+}
+
+% dodatkowe kolory
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% grafiki
+\usepackage[pdftex]{graphicx}
+\usepackage{subcaption}
+
+% obracanie
+\usepackage{rotating}
+
+% odsyłacze jako linki
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=Green,
+	filecolor=red,
+	urlcolor=blue,
+}
+
+% dane do tytułu
 \author{Karol Mamiński}
 \title{Zestawienia Wybranych Komend Programu \LaTeX}
 \date{}
 
+
+
+% przygotowanie strony tytułowej
 \makeatletter
 \newcommand{\linia}{\rule{\linewidth}{0.4mm}}
 \renewcommand{\maketitle}{\begin{titlepage}
@@ -30,15 +80,21 @@
 }
 \makeatother
 
-\renewcommand*\contentsname{Spis treści}
+% zmiana nazwy spisu treści (domyślnie "Contents"
+\renewcommand*\contentsname{\textcolor{Green}{Spis treści}}
 
+% zmiana symbolu listy zagnieżdżonej w całym dokumencie
 \renewcommand{\labelitemii}{\labelitemiv{}}
 
+
 \begin{document}
+% strona tytułowa
 \maketitle
 \tableofcontents
 \newpage
-\section{Podstawy Składni}
+
+% Podstawy składni
+\section{Podstawy Składni} \label{sec:podstawy składni}
 \subsection{Komendy}
 Komendy w \LaTeX zaczynają się znakiem $\backslash$ (backslash), po którym następują słowa kluczowe, np.:\newline
 $\backslash$newline\newline
@@ -68,7 +124,7 @@ W~drugim przypadku chcemy zmienić sposób numerowania wszystkich list w dokumen
 W~takim wypadku należy użyć polecenia $\backslash$renewcommand w~następujący sposób:\\
 $\backslash$renewcommand\{$\backslash$labelenumi\}\{$\backslash$roman\{enumi\}\} \\
 
-
+%Podział dokumentu
 \section{Podział Dokumentu}
 \subsection{Preambuła}
 W preambule umieszczane są informacje kluczowe z punktu widzenia programu, takie jak klasa dokumentu, wybrane pakiety oraz dane, które mają znaleźć się w tytule.\newline
@@ -90,8 +146,30 @@ Przykład:\newline
 $\backslash$begin\{document\}\newline
 Treść dokumentu\newline
 $\backslash$end\{document\}
-\newpage
 
+\subsection{Nagłówki i stopki}
+Aby formatować nagłówki i stopki należy skorzystać za pakietu \textbf{fancyhdr} i w preambule umieścić komendę  $\backslash$pagestyle\{fancy\}. Następnie możliwe jest formatowanie za pomocą komend takich jak podane poniżej:
+\begin{itemize}
+	\item $\backslash$fancyhead\{\} -- usuwa formatowanie dla nagłówków
+	\item $\backslash$fancyfoot\{\} -- usuwa formatowanie dla stopek
+	\item $\backslash$fancyhf\{\} -- usuwa formatowanie dla nagłówków i stopek
+	\item $\backslash$fancyhead[ lokalizacja ]\{zawartość\}
+	\begin{itemize}
+		\item lokalizacje:
+		\begin{itemize}
+			\item O / E -- strony nieparzyste / parzyste (Odd / Even)
+			\item H / F -- nagłówek / stopka (Header / Footer)
+			\item L / C / R -- po lewej / na środku / po prawej (Left / Center / Right)
+		\end{itemize}
+		\item zawartość -- treść mająca znaleźć się w wybranej lokalizacji
+	\end{itemize}
+\end{itemize}
+
+Przykład:\\
+$\backslash$fancyhead[ L ]\{Plik Pomocniczy\} -- efekt taki jak w tym dokumencie
+
+
+% Formatowanie tekstu
 \section{Formatowanie Tekstu}
 \subsection{Wcięcia i odstępy}
 \LaTeX rozpoznaje spacje oraz złamania wierszy w kodzie źródłowym jako pojedynczy odstęp. \\
@@ -103,6 +181,7 @@ Do dokładniejszej kontroli wcięć i odstępów wykorzystujemy następujące po
 	\item $\backslash$clearpage -- rozpoczyna nową stronę
 	\item $\backslash$cleardoublepage -- rozpoczyna nową nieparzystą stronę (w razie potrzeby tworzona również pusta parzysta strona)
 	\item $\sim$ (tylda) -- wstawia odstęp zabraniając jednocześnie złamania wiersza (np. W\~{}poniedziałek)
+	\item $\backslash$vspace\{x\} -- wstawia pionowy odstęp o podanym wymiarze x, np. 1,5 cm
 \end{itemize} 
 
 \subsection{Podział hierarchiczny}
@@ -126,7 +205,7 @@ W \LaTeX 'u dysponujemy następującymi znakami podziału:
 W przypadku każdej z w/w komend umieszczenie gwiazdki (*) tuż przed nawiasem klamrowym spowoduje brak numeracji (np. $\backslash$section*\{\} ).
 
 \subsection{Znaki specjalne}
-Znaki specjalne dostępne w \LaTeX :
+Przykładowe znaki specjalne dostępne w \LaTeX :
 \begin{itemize}
 	\item $\backslash$\~{}\{\} -- \~{}
 	\item \$$\backslash$sim\$ -- $\sim$
@@ -135,6 +214,315 @@ Znaki specjalne dostępne w \LaTeX :
 	\item $\backslash$texteuro -- \texteuro ~(wymaga pakietu textcomp)
 	\item $\backslash$LaTeX -- \LaTeX
 	\item aby uzyskać długi myślnik (taki jak powyżej) należy wpisać dwa minusy
+\end{itemize}
+Jeśli chcemy napisać dłuższy fragment tekstu z wieloma znakami specjalnymi możemy użyć polecenia $\backslash$verb| treść |, które powoduje, że każdy znak wewnątrz pionowych kresek traktowany jest dosłownie (przy czym oznacza to, że nie będą działały umieszczony tam komendy).
+\subsection{Cytaty}
+Cytaty w \LaTeX 'u tworzymy za pomocą środowiska \textbf{quote}. Przykład: \\
+$\backslash$begin\{quote\} \\
+Cytat
+$\backslash$end\{quote\} \\
+\\
+Przykład działania:
+\begin{quote}
+Przykładowy cytat
+\end{quote}
+
+\subsection{Wyróżnienia tekstu}
+Przykładowe wyróżnienia tekstu w \LaTeX :
+\begin{itemize}
+	\item $\backslash$textbf\{Przykładowy tekst\} -- \textbf{Pogrubienie}
+	\item $\backslash$textit\{Przykładowy tekst\} -- \textit{Kursywa (italic)}
+	\item $\backslash$textsl\{Przykładowy tekst\} -- \textsl{Kursywa (slanted)}
+	\item $\backslash$emph\{Przykładowy tekst\} -- \emph{Kursywa (emfaza)}
+	\item $\backslash$textsc\{Przykładowy tekst\} -- \textsc{Kapitaliki}
+	\item $\backslash$underline\{Przykładowy tekst\} -- \underline{Podkreślenie}
+\end{itemize}
+
+\subsection{Rozmiary tekstu}
+Rozmiar tekstu w \LaTeX 'u jest względny do rozmiaru podanego w klasie dokumentu.
+
+Przykładowe rozmiary tekstu:
+\begin{itemize}
+	\item \tiny{$\backslash$tiny}
+	\item \scriptsize{$\backslash$scriptsize}
+	\item \footnotesize{$\backslash$footnotesize}
+	\item \small{$\backslash$small}
+	\item \normalsize{$\backslash$normalsize}
+	\item \large{$\backslash$large}
+	\item \LARGE{$\backslash$LARGE}
+	\item \huge{$\backslash$huge}
+	\item \Huge{$\backslash$Huge}
+\end{itemize}
+
+% Matematyka
+\section{Równania matematyczne}
+\subsection{Równania obok tekstu}
+Aby wstawić równanie w środku wiersza stosujemy otoczenie \textbf{math}. Przykład kodu: \\
+Przykładowy tekst $\backslash$begin\{math\} nasze równanie $\backslash$end\{math\} dalszy ciąg tekstu.\\
+\\
+Skrótowo możemy skorzystać ze znaków \$ . Przykład kodu:\\
+Przykładowy tekst \$ nasze równanie \$ dalszy ciąg tekstu.\\
+\\
+Niezależnie od zapisu efekt będzie identyczny. Przykład działania: \\
+Wzór matematyczny $e = mc^2$ jest autorstwa Isaaca Newtona. \\
+
+\subsection{Równania w osobnym wierszu}
+Równania w osobnym wierszy otrzymujemy dzięki zastosowania otoczenia \textbf{displaymath}. Przykład kodu:\\
+$\backslash$begin\{displaymath\}\\
+nasze równanie\\
+$\backslash$end\{displaymath\}\\
+\\
+Skrótowo możemy skorzystać z podwójnego znaku \$ . Przykład kodu: \\
+\$\$ \\
+nasze równanie \\
+\$\$ \\
+\\
+Efekt w obu przypadkach jest jednakowy. Przykłady działania:
+
+\begin{displaymath}
+\sum_{k=1}^{n}k^{2} = \frac{n(n + 1)(2n + 1)}{6}
+\end{displaymath}
+
+\begin{displaymath}
+\prod_{k=2}^{n+1}\left( 1 - \frac{1}{k^{2}} \right) = \frac{n + 1}{2n}
+\end{displaymath}
+
+$$
+\Delta = b^2 - 4ac
+$$
+
+$$
+{}^{12}_{\phantom{1}6}\textrm{C}
+$$
+
+Możemy również skorzystać z otoczenia \textbf{equation} które dodatkowo zapewni nam numerowanie. Przykłady działania:
+
+\begin{equation}
+\Gamma (z) = \int_{0}^{+\infty} t^{z-1}e^{-t}dt
+\end{equation}
+
+\begin{equation}
+\Gamma (z) = \lim_{n \rightarrow +\infty} \frac{n!n^z}{z(z + 1)(z + 2)\cdots(z + n)} = \frac{1}{z}\prod_{n=1}^{\infty} \frac{(1 + \frac{1}{n})^{z}}{1 + \frac{z}{n}}.
+\end{equation}
+
+\begin{equation}
+\frac{1}{\Gamma(z)} = ze^{yz} \prod_{n=1+}^{\infty} \left[ \left( 1 + \frac{z}{n} \right) e^{-\frac{z}{n}} \right].
+\end{equation}
+
+
+\subsection{Równania wielowierszowe}
+Równania wielowierszowe tworzymy za pomocą otoczenia \textbf{align} z pakietu \textbf{asmath}. Przykład kodu: \\
+\\
+$\backslash$begin\{align\}\\
+	\verb|(x+y) * (x-y)*(x+z) & = (x^2 - y^ 2)*(x+z) &&\text{(pierwszy wiersz)} \\| \\
+	\verb|                    & = x^3 + x^2z - y^2x + y^2z &&\text{(drugi wiersz)} \nonumber| \\
+$\backslash$end\{align\}\\
+\\
+Przy czym znak \& służy do wyznaczenia miejsca, do którego mają zostać wyrównane znaki równości, zaś podwójny znak \& służy do dodania odstępu pomiędzy równaniem i przypisem. Polecenie $\backslash$nonumber zapobiega numerowaniu konkretnego wiersza. Przykład działania powyższego kodu:
+\begin{align}
+(x+y) * (x-y)*(x+z) & = (x^2 - y^ 2)*(x+z) &&\text{(pierwszy wiersz)} \\ 
+                    & = x^3 + x^2z - y^2x + y^2z &&\text{(drugi wiersz)} \nonumber
+\end{align}
+
+\subsection{Algorytmy}
+Do zapisywania algorytmów w \LaTeX ~wykorzystujemy pakiety \textbf{algorithm} oraz \textbf{algpseudocode}. 
+
+Aby napisać algorytm należy skorzystać z otoczenia \textit{algorithm}, a wewnątrz niego umieścić położenie \textit{algorithmic}. Przykład:
+
+\begin{algorithm}
+\caption{Mój algorytm}\label{alg:cap}
+\begin{algorithmic}
+\Require $ n \geq 0$
+\Ensure $ a = x^n$
+\State $ k \leftarrow n; a \leftarrow 1; b \leftarrow x$
+\While{$k > 0$}[Niezmiennik: $x^n = a * b^k$]
+\If{$k$ jest liczbą parzystą}
+	\State $k \leftarrow k/2$
+	\State $b \leftarrow b*b$
+\Else[$k$ jest liczbą nieparzystą]
+	\State $k \leftarrow k - 1$
+	\State $a \leftarrow a*b$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Macierze}
+
+Macierze w \LaTeX 'u składamy za pomocą otoczenia \textit{matrix} i jego podtypów. Przykład: \\
+\$\$ \\
+$\backslash$begin{matrix} \\
+1 \& 2 \& 3$\backslash\backslash$ \\
+a \& b \& c \\
+$\backslash$end{matrix} \\
+\$\$ \\
+
+$$
+\begin{matrix}
+1 & 2 & 3\\
+a & b & c
+\end{matrix}
+$$
+
+Podtypy otoczenia \textit{matrix} odnoszą się przede wszystkim do tego, jakiego typu nawiasy będą je otaczać. Wybrane podtypy:
+
+\begin{itemize}
+	\item matrix -- bez nawiasów
+	\item pmatrix -- nawiasy zwykłe ()
+	\item bmatrix -- nawiasy kwadratowe [ ]
+	\item vmatrix -- pionowe linie | |
+	\item Vmatrix -- podwójne pionowe linie || ||
+\end{itemize}
+
+Brakujące lub niestandardowe rodzaje nawiasów można dodać do macierzy za pomocą poleceń $\backslash$left i $\backslash$right. Przykład: \\
+\$\$ \\
+$\backslash$left$\backslash$langle
+$\backslash$begin{matrix} \\
+1 \& 2 \& 3$\backslash\backslash$ \\
+a \& b \& c \\
+d \& e \& f \\
+$\backslash$end{matrix} \\
+$\backslash$rightt$\backslash$rangle
+\$\$ \\
+
+$$
+\left\langle
+\begin{matrix}
+1 & 2 & 3\\
+a & b & c\\
+d & e & f
+\end{matrix}
+\right\rangle
+$$
+
+% odsyłacze
+\section{Odsyłacze}
+\subsection{Odsyłacze jako tekst}
+
+W \LaTeX 'u możemy korzystać z odsyłaczy ($\backslash$ref\{\}) w celu wskazania na konkretne miejsce w dokumencie. Przykładowo aby w tej sekcji utworzyć odsyłacz do podstaw składni należy użyć następującej komendy: \\
+$\backslash$ref\{sec:podstawy składni\} \\
+\\
+Przykład działania: \\
+Znajomość podstaw składni (\ref{sec:podstawy składni}) jest bardzo ważna. \\
+\\
+Przy czym nie należy zapominać, że jeśli chcemy odwołać się do danego miejsca, należy w nim umieścić właściwą etykietę. W tym przypadku w sekcji o podstawach składni umieszczono następującą komendę: \\
+$\backslash$label\{sec:podstawy składni\}
+
+\subsection{odsyłacze jako hiperłącza}
+Domyślnie odsyłacze są zwyczajnym tekstem o charakterze czysto informacyjnym. Aby zmienić je w linki do konkretnych częsci dokumentu należy skorzystać z pakietu \textbf{hyperref}. \\
+Dołączenie tego pakietu zamieni również na linki wszystkie pozycje w spisie treści. \\
+Należy zaznaczyć, że pakiet hyperref powinien zwykle być dołączony jako ostatni względem innych pakietów. \\
+\\
+Aby dostosować kolor odsyłaczy możemy w preambule wykorzystać polecenie $\backslash$hypersetup\{\}. Poniżej kod zastosowany w tym dokumencie: \\
+$\backslash$hypersetup\{
+	colorlinks=true,
+	linkcolor=Green,
+	filecolor=red,
+	urlcolor=blue,
+\}
+
+\section{Kolory}
+\subsection{Pakiet xcolor}
+Domyślnie \LaTeX nie posiada zbyt wielu kolorów, ale możemy to zmienić z pomocą pakietu \textbf{xcolor}. W tym dokumencie został on dodany z następującymi parametrami: \\
+$\backslash$usepackage[ usenames,dvipsnames,svgnames,table ]\{xcolor\}
+
+\subsection{Lista komend}
+Pakiet ten pozwala nam na zmianę koloru tekstu, strony i tabel. Możliwe jest nawet definiowanie własnych kolorów.\\
+Poniżej lista komend zapewnianych przez \textbf{xcolor}:
+\begin{itemize}
+	\item $\backslash$textcolor\{kolor\}\{tekst\} -- zmiana koloru \textcolor{ForestGreen}{tekstu}
+	\item $\backslash$pagecolor\{kolor\} -- zmiana koloru strony
+	\item $\backslash$colorbox\{kolor tła\}\{tekst\} -- zmiana koloru \colorbox{ForestGreen}{tła}
+	\item $\backslash$fcolorbox\{kolor ramki\}\{kolor tła\}\{tekst\} -- kolor \fcolorbox{Red}{Blue}{ramki i tła}
+	\item $\backslash$definecolor\{nazwa\}\{model\}\{kodowanie koloru\}
+	\begin{itemize}
+		\item nazwa -- nazwa naszego koloru (dowolna, ustalana przez nas)
+		\item model -- do wyboru mamy 5 opcji
+		\begin{itemize}
+			\item gray -- odcienie szarości
+			\item rgb -- red, green, blue, podawane od 0 do 1
+			\item RGB -- red, green, blue, podawane od 0 do 255
+			\item HTML --  red, green, blue, podawane szesnastkowo
+			\item cmyk -- cyan, magenta, yellow, black, podawane od 0 do 1
+		\end{itemize}
+		\item kodowanie koloru -- kodowanie zgodne z wybranym modelem
+	\end{itemize}
+\end{itemize}
+
+% grafiki
+\section{Grafiki}
+\subsection{Pakiet graphicx}
+Do zamieszczania grafik w dokumencie \LaTeX 'a potrzebujemy pakietu \textbf{graphicx}. Aby zamieszczać pliki o rozszerzeniu .eps musimy podać dodatkowo parametr \textit{dvips} zaś do plików o rozszerzeniu .jpg i .png potrzebny jest parametr \textit{pdtex}. Parametrów tych \textbf{nie można} stosować jednocześnie. \\
+W tym dokumencie pakiet graphicx został dołączony w następujący sposób: \\
+$\backslash$usepackage[ pdftex ]\{graphicx\}
+
+\subsection{Umieszczanie grafiki}
+Do zamieszczania grafiki w dokumencie służy polecenie: \\
+$\backslash$includegraphics[ klucz=wartość, ... ]\{plik\} \\
+Gdzie \textit{klucz} oznacza operacje wykonywane na obrazie przed zamieszczeniem (np. zmiana rozmiaru). Poniżej wybrane klucze:
+\begin{itemize}
+	 \item width -- szerokość
+	 \item height -- wysokość
+	 \item angle -- kąt nachylenia (odwrotnie do wskazówek zegara)
+	 \item scale -- skala
+\end{itemize}
+
+Dodatkowo grafiki z reguły umieszcza się wewnątrz otoczenia \textit{figure}, co pozwala dodać do nich tytuł lub opis oraz etykietę za pomocą komend $\backslash$caption\{\} i $\backslash$label\{\}. \\
+\begin{figure}
+\centering
+\includegraphics[width=12cm, scale=1]{kot2.png}
+\caption{$\backslash$includegraphics[ width=12cm, scale=1 ]\{kot2.png\}}
+\label{fig:kot2}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=12cm, angle=270, scale=1]{kot3}
+\caption{$\backslash$includegraphics[ width=12cm, angle=270, scale=1 ]\{kot3\}}
+\label{fig:kot3}
+\end{figure}
+
+Pamiętać należy również, że lepiej jest nie podawać rozszerzenia pliku, ponieważ wtedy \LaTeX ~będzie szukał plików o podanej nazwie i rozszerzeniu dopasowanym do podanego przez nas parametru. 
+
+Możliwe jest umieszczanie wielu grafik jako jednej figury za pomocą otoczenia \textit{subfigure} (wymaga pakietu \textbf{subcaption}).
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth, height=6cm]{kot2.png}
+\caption{kot2.png}
+\label{fig:subkot2}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth, height=6cm]{kot3}
+\caption{kot3.png}
+\label{fig:subkot3}
+\end{subfigure}
+
+\caption{Powyższe obrazy to jedna figura}
+\label{fig:koty}
+\end{figure}
+
+\textbf{Ważne!} Jeśli chcemy mieć dwie grafiki wewnątrz tej samej figury umieszczone obok siebie, nie możemy umieszczać pustego wiersza pomiędzy końcem pierwszego i początkiem następnego otoczenia \textit{subfigure}.
+
+\subsection{Położenie w dokumencie}
+Czasami dobrze zdać się na intuicję \LaTeX 'a, ale w większości przypadków wolimy sami ustalić, gdzie znajdzie się nasza figura. Aby tego dokonać należy do położenia \textit{figure} dopisać jeden z następujących parametrów:
+\begin{itemize}
+	\item h -- wstawia figurę w miejscu, w którym znajduje się ona w kodzie (here)
+	\item t -- wstawia figurę na początku strony (top) 
+	\item b -- wstawia figurę na końcu strony (bottom)
+	\item p -- wstawia nową stronę, na której znajdują się wyłącznie figury (page)
+	\item ! -- ignoruje parametry wstawiania figur \LaTeX 'a
+\end{itemize}
+
+Możliwe jest użycie więcej niż jednego parametru. W takim wypadku \LaTeX ~będzie próbował umieścić figurę w podanych miejscach zgodnie z kolejnością wpisania parametrów.
+
+\subsection{Obracanie elementów}
+W pracy z grafiką bądź tabelami, ale i zwykłym tekstem przydatna jest czasem możliwość obrócenia pewnych elementów. Z pomocą przychodzi pakiet \textbf{rotating}. Poniżej przykładowe środowiska zapewnianie przez ten pakiet:
+\begin{itemize}
+	\item $\backslash$begin\{rotate\}\{kąt\} -- obraca elementy o wybrany kąt
+	\item $\backslash$begin\{sideways\} -- obraca elementy o $90^{\circ}$
+	\item $\backslash$begin\{sidewaystable\} -- obraca tabelę o $90^{\circ}$ (tabela umieszczana na oddzielnej stronie)
+	\item $\backslash$begin\{sidewaysfigure\} -- obraca grafikę o $90^{\circ}$ (grafika umieszczana na oddzielnej stronie)
 \end{itemize}
 \end{document}
 
