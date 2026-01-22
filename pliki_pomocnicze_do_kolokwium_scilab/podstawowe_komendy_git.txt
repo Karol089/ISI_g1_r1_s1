@@ -1,0 +1,39 @@
+# Inicjalizacja git:
+git init
+
+# Konfiguracja użytkownika lokalnego:
+git config --local user.name akowalski
+git config --local user.email akowalski@gmail.com
+
+# Wyłączenie synchronizacji VSC
+git config --system --unset credential.helper
+
+# Wyświetlenie ustawień globalnych / lokalnych
+git config --global -l
+git config --local -l
+
+# Dodawanie wybranego pliku / wszystkich plików do repozytorium
+git add nazwa_pliku
+git add *
+
+# Usuwanie wybranego pliku / wszystkich plików z repozytorium
+git rm nazwa_pliku
+git rm *
+
+# Tworzenie migawki (zapis zmian)
+git commit -m "nazwa_migawki"
+
+# Podpinanie zdalnego repo
+git remote add origin https://github.com/nazwa_użytkownika/nazwa_repo.git
+
+# Sprawdzanie / zmiana podpiętego zdalnego repo
+git remote get-url origin
+git remote set-url origin https://nowy.adres.repo
+
+# Wysłanie stanu repozytorium z ostatniego commit'u do zdalnego repo (z -f pozwala na nadpisywanie)
+git push -u origin master
+git push -f origin master
+
+# Ściąganie zdalnego repo
+git clone https://link.do.repo
+
