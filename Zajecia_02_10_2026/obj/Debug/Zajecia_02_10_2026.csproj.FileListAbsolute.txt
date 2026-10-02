@@ -1,0 +1,11 @@
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\bin\Debug\Zajecia_02_10_2026.exe.config
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\bin\Debug\Zajecia_02_10_2026.exe
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\bin\Debug\Zajecia_02_10_2026.pdb
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.csproj.AssemblyReference.cache
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.Properties.Resources.resources
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.csproj.GenerateResource.cache
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.csproj.CoreCompileInputs.cache
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.exe
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.pdb
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.exe.config
+C:\Users\local\Desktop\185135\Zajecia_02_10_2026\obj\Debug\Zajecia_02_10_2026.Form1.resources
